@@ -6,11 +6,17 @@ run() {
   elif [[ $1 = "start" ]]; then
     start;
   elif [[ $1 = "dev" ]]; then
-    start --reload
+    start --reload;
   elif [[ $1 = "install" ]]; then
     install;
   elif [[ "$1" = "add" ]]; then
     add $2;
+  elif [[ "$1" = "download" ]]; then
+    download;
+  elif [[ "$1" = "run" ]]; then
+    for command in "${@:2}"; do
+      run $command;
+    done
   else
     echo "Unrecognized command \"$1!\"";
     exit 1;
@@ -41,6 +47,11 @@ add() {
   echo "Adding \"$1\" to requirements.txt...";
   echo "$1" >> requirements.txt;
   install;
+}
+
+download() {
+  mkdir -p model
+  wget -O model/trained_model.pickle https://maroto.dev/ufmg-cloudcomputing-tp2/trained_model.pickle;
 }
 
 run "$@";
