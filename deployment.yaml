@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: american-predictor
-        image: fabiomorato/american-predictor
+        image: fabiomorato/american-predictor:1.0.1
         ports:
         - containerPort: 5008
