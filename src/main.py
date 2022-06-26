@@ -42,7 +42,7 @@ def load_model():
 def load_info():
   global project_info
   try:
-    file = open("./info.json", "r")
+    file = open("./project-info.json", "r")
     project_info = json.loads(file.read())
     file.close()
   except:
